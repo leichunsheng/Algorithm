@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void directSort() {
-        //todo:直接选择排序的具体实现
+
 
         for (int i = 1; i < items.length; i++) {
             int j = i - 1;
