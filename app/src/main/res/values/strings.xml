@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Algorithm</string>
     <string name="activity_main_edt_items_hint">请输入排序数据，以半角逗号隔开</string>
+<!--<string name="spin_promptt">请选择排序方法</string>-->
+
+    <string-array name="fangfa">
+        <item>选择排序</item>
+        <item>直接插入排序</item>
+        <item>希尔排序</item>
+        <item>...</item>
+    </string-array>
+
 </resources>

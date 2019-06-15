@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void directSort() {
 
-
         for (int i = 1; i < items.length; i++) {
             int j = i - 1;
             if (items[j].compareTo(items[i]) < 0) {
@@ -68,24 +67,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             items[j + 1] = tmp;
         }
     }
-//        for(int i=0;i<items.length-1;i++){
-//            int minPos=i;
-//            for (int j=i+1;j<items.length;j++){
-//                if (items[minPos].compareTo(items[j])>0){
-//                    minPos=j;
-//                }
-//            }
-//        }
-//        for (int j=0;j<=items.length-1;j++){
-//            for (int i=0;i<items.length-1;i++){
-//                if (items[j]<items[i]){
-//                    int temp=items[i] ;
-//                    items[i]=items[j];
-//                    items[j]=temp;
-//                }
-//            }
-//        }
-
 
     private void generateItems() {
         items = new Integer[10];
