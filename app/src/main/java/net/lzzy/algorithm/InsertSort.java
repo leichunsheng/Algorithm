@@ -6,10 +6,10 @@ import javax.xml.transform.Templates;
  * Created by lzzy_gxy on 2019/6/15.
  * Description:
  */
-public class InsertSort extends BaseSort {
+public class InsertSort<T extends Comparable<? super T>> extends BaseSort<T>{
 
     //------------构造器--------
-    InsertSort(Integer[] items) {
+    InsertSort(T[] items) {
         super(items);
         //---------构造器-------
     }
@@ -23,7 +23,7 @@ public class InsertSort extends BaseSort {
             if (bigger(items[i], items[j])) {
                 continue;
             }
-            Integer tmp = (Integer) items[i];
+            T tmp = (T) items[i];
             while (j >= 0 && bigger(items[j], tmp)) {
                 items[j + 1] = items[j];
                 moveStep++;

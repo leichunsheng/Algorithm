@@ -4,10 +4,10 @@ package net.lzzy.algorithm;
  * Created by lzzy_gxy on 2019/6/13.
  * Description:
  */
-public class DirectSort<T extends Comparable<T>> extends BaseSort {
+public class DirectSort<T extends Comparable<? super T>> extends BaseSort<T> {
 
     //构造器
-    DirectSort(Integer[] items) {
+    DirectSort(T[] items) {
         super(items);
         //构造器
     }

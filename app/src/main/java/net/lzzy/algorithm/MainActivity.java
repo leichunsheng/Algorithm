@@ -3,10 +3,15 @@ package net.lzzy.algorithm;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -16,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Integer[] items;
     private EditText edtItems;
     private TextView tvResult;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +31,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.activity_main_btn_generate).setOnClickListener(this);
         findViewById(R.id.activity_main_btn_sort).setOnClickListener(this);
         tvResult = findViewById(R.id.activity_main_tv_result);
+        initSpinner();
+        initViews();
     }
+
+    private void initSpinner() {
+        Spinner spinner = findViewById(R.id.activity_spin);
+        spinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, SortFactory.getSortNames()));
+    }
+
+    private void initViews() {
+        edtItems = findViewById(R.id.activity_main_edt_items);
+        findViewById(R.id.activity_main_btn_generate).setOnClickListener(this);
+        findViewById(R.id.activity_main_btn_sort).setOnClickListener(this);
+        tvResult = findViewById(R.id.activity_main_tv_result);
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -35,8 +56,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 displayItems(edtItems);
                 break;
             case R.id.activity_main_btn_sort:
-                directSort();
-                displayItems(tvResult);
+                BaseSort<Integer> sort = SortFactory.getInstance(spinner.getSelectedItemPosition(), items);
+                BaseSort<Integer> sortNotNull = Objects.requireNonNull(sort);
+                sortNotNull.sortWithTime();
+                String result = sortNotNull.getResult();
+                tvResult.setText(result);
+                Toast.makeText(this, "总时长：" + sort.getDuration(), Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
