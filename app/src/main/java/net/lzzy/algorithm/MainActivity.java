@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.security.PrivateKey;
 import java.util.Calendar;
 import java.util.Objects;
 import java.util.Random;
@@ -22,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText edtItems;
     private TextView tvResult;
     Spinner spinner;
+    private LinearLayout container;
+    Spinner spSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +36,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.activity_main_btn_generate).setOnClickListener(this);
         findViewById(R.id.activity_main_btn_sort).setOnClickListener(this);
         tvResult = findViewById(R.id.activity_main_tv_result);
+        spinner=findViewById(R.id.activity_spin);
         initSpinner();
         initViews();
+        initSearch();
     }
+
+    private void initSearch(){
+         spSearch=findViewById(R.id.activity_spin2);
+        spSearch.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,SearchFactory.getSearchNames()));
+//        container=findViewById(R.id.activity_Search);
+    }
+
 
     private void initSpinner() {
         Spinner spinner = findViewById(R.id.activity_spin);
@@ -47,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvResult = findViewById(R.id.activity_main_tv_result);
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -59,13 +72,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 BaseSort<Integer> sort = SortFactory.getInstance(spinner.getSelectedItemPosition(), items);
                 BaseSort<Integer> sortNotNull = Objects.requireNonNull(sort);
                 sortNotNull.sortWithTime();
-                String result = sortNotNull.getResult();
+                String result = sort.getResult();
                 tvResult.setText(result);
                 Toast.makeText(this, "总时长：" + sort.getDuration(), Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
         }
+    }
+    private void resetSearch(){
+        container.removeAllViews();
+        generateItems();
     }
 
     private void displayItems(TextView tv) {

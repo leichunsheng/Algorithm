@@ -10,4 +10,10 @@
         <item>...</item>
     </string-array>
 
+    <string-array name="ff2">
+        <item>顺序查找</item>
+        <item>二分查找</item>
+        <item>...</item>
+    </string-array>
+
 </resources>

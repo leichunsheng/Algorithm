@@ -3,7 +3,7 @@ package net.lzzy.algorithm;
 import javax.xml.transform.Templates;
 
 /**
- * Created by lzzy_gxy on 2019/6/15.
+ * Created by lzzy_gxy on 2019/6/15.插入排序
  * Description:
  */
 public class InsertSort<T extends Comparable<? super T>> extends BaseSort<T>{

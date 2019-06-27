@@ -48,7 +48,31 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="排序" />
-
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:orientation="horizontal">
+    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <Spinner
+        android:id="@+id/activity_spin2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/ff2">
+    </Spinner>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="生产查找数组"
+        android:id="@+id/activity_Search"/>
+</LinearLayout>
+
 
 </LinearLayout>

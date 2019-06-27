@@ -1,7 +1,7 @@
 package net.lzzy.algorithm;
 
 /**
- * Created by lzzy_gxy on 2019/6/20.
+ * Created by lzzy_gxy on 2019/6/20.排序工厂类
  * Description:
  */
 public class SortFactory {
@@ -17,9 +17,6 @@ public class SortFactory {
             case 2:
                 sort = new ShellSort<>(items);
                 break;
-//            case 3:
-//                sort=new BubbleSort<>(items) ;
-//                break;
             default:
                 return null;
         }

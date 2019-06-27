@@ -30,6 +30,10 @@ public abstract class BaseSort<T extends Comparable<? super T>> {
     }
 
     void swap(int i, int j) {
+        T num;
+        num=  items[i];
+        items[i]=items[j];
+        items[j]=num;
 
     }
 

@@ -1,8 +1,9 @@
 package net.lzzy.algorithm;
 
 /**
- * Created by lzzy_gxy on 2019/6/15.
+ * Created by lzzy_gxy on 2019/6/15.希尔排序
  * Description:
+ *
  */
 public class ShellSort<T extends Comparable<? super T>> extends BaseSort<T> {
     ShellSort(T[] items) {
@@ -20,15 +21,15 @@ public class ShellSort<T extends Comparable<? super T>> extends BaseSort<T> {
                 if (bigger(items[i], items[j])) {
                     continue;
                 }
-                T tmp = (T) items[i];
+                T tmp =  items[i];
                 while (j >= 0 && bigger(items[j], tmp)) {
                     items[j + g] = items[j];
                     moveStep++;
                     j -= g;
                 }
                 items[j + g] = tmp;
-            }
+            }g = g / 2;
         }
-        g = g / 2;
+
     }
 }
