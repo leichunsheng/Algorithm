@@ -1,5 +1,6 @@
 package net.lzzy.algorithm;
 
+import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -73,6 +74,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 BaseSort<Integer> sortNotNull = Objects.requireNonNull(sort);
                 sortNotNull.sortWithTime();
                 String result = sort.getResult();
+                String str = "运行时长："+sort.getDuration()
+                        +"\n比较次数：" +sort.getCompareCount()+
+                        "\n交换次数"+sort.getSwapCount()+"移动次数"+sort.getMoveStep();
+
                 tvResult.setText(result);
                 Toast.makeText(this, "总时长：" + sort.getDuration(), Toast.LENGTH_SHORT).show();
                 break;
